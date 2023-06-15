@@ -9,7 +9,7 @@ export const ProductList = () => {
   }, []);
 
   const getProducts = async () => {
-    let result = await fetch(`${process.env.REACT_APP_SECRET_NAME}/products`, {
+    let result = await fetch(`${process.env.REACT_APP_BACKEND_URL}/products`, {
       headers: {
         authorization: `bearer ${JSON.parse(localStorage.getItem("token"))} `,
       },
