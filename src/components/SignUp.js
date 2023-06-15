@@ -16,7 +16,7 @@ const SignUp = () => {
   }, []);
 
   const submitHandler = async () => {
-    let result = await fetch("http://localhost:5000/register", {
+    let result = await fetch(`${process.env.REACT_APP_BACKEND_URL}/register`, {
       method: "post",
       body: JSON.stringify({
         name,

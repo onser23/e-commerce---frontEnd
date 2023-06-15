@@ -20,7 +20,7 @@ export const ProductList = () => {
 
   const deleteProduct = async (id) => {
     console.log(id);
-    let result = await fetch(`http://localhost:5000/product/${id}`, {
+    let result = await fetch(`${process.env.REACT_APP_BACKEND_URL}/${id}`, {
       method: "delete",
       headers: {
         authorization: `bearer ${JSON.parse(localStorage.getItem("token"))} `,
@@ -35,11 +35,16 @@ export const ProductList = () => {
   const searchHandler = async (event) => {
     let key = event.target.value;
     if (key) {
-      let result = await fetch(`http://localhost:5000/search/${key}`, {
-        headers: {
-          authorization: `bearer ${JSON.parse(localStorage.getItem("token"))} `,
-        },
-      });
+      let result = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/search/${key}`,
+        {
+          headers: {
+            authorization: `bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )} `,
+          },
+        }
+      );
       result = await result.json();
       if (result) {
         setProducts(result);
