@@ -15,7 +15,7 @@ const Login = () => {
   }, []);
 
   const submitHandler = async () => {
-    let result = await fetch("http://localhost:5000/login", {
+    let result = await fetch(`${process.env.REACT_APP_SECRET_NAME}/login`, {
       method: "post",
       body: JSON.stringify({
         email,
