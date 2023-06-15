@@ -16,16 +16,19 @@ const Login = () => {
 
   const submitHandler = async () => {
     console.log(process.env.REACT_APP_BACKEND_URL);
-    let result = await fetch(`${process.env.REACT_APP_BACKEND_URL}/login`, {
-      method: "post",
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    let result = await fetch(
+      `https://e-commerce-back-end-pfcq-new.vercel.app/login`,
+      {
+        method: "post",
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     result = await result.json();
     if (result.auth) {
       localStorage.setItem("user", JSON.stringify(result.user));
